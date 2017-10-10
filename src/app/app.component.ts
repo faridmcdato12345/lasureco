@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { MatInputModule } from '@angular/material';
+import {FormControl, Validators} from '@angular/forms';
+import {trigger, state, style, animate, transition} from '@angular/animations';
+
+
+
+const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 @Component({
   selector: 'app-root',
@@ -8,4 +13,7 @@ import { MatInputModule } from '@angular/material';
 })
 export class AppComponent {
   title = 'app';
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern(EMAIL_REGEX)]);
 }
